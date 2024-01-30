@@ -1,5 +1,6 @@
 -- View the first few rows from each table
-SELECT TOP 10 * FROM departments;
+SELECT TOP 10 * 
+FROM departments;
 
 -- Row counts
 SELECT COUNT(*) AS TotalRows 
