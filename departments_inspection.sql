@@ -1,3 +1,4 @@
+USE instacart_market;
 -- View the first few rows from each table
 SELECT TOP 10 * 
 FROM departments;
@@ -17,4 +18,12 @@ ALTER COLUMN department_id INT;
 SELECT * 
 FROM departments 
 WHERE department_id IS NULL OR department IS NULL;
+
+-- Find and remove duplicates:
+SELECT department_id, COUNT(*) 
+FROM departments
+GROUP BY department_id 
+HAVING COUNT(*) > 1;
+
+
 
