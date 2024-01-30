@@ -19,7 +19,7 @@ ALTER COLUMN aisle_id INT;
 -- Find missing values
 SELECT * 
 FROM aisles 
-WHERE aisle IS NULL OR aisle like 'missing' OR aisle_id IS NULL;
+WHERE aisle IS NULL OR aisle_id IS NULL;
 -- Update missing values
 
 -- Delete row with missing values
