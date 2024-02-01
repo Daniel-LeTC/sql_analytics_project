@@ -38,8 +38,15 @@ ORDER BY o.order_dow, TotalSold DESC;
 EXEC GetTopSellingProductsByDay @DayOfWeek = 1;
 
 -- Reorder rates for each product, apply for above 70%:
-SELECT product_id, CONVERT(DECIMAL(10,2), AVG(CAST(reordered AS FLOAT)) * 100) AS ReorderRate
-FROM order_products
-GROUP BY product_id
+SELECT d.department, p.product_name, p.product_id, CONVERT(DECIMAL(10,2), AVG(CAST(reordered AS FLOAT)) * 100) AS ReorderRate
+FROM order_products op
+INNER JOIN 
+    products AS p ON op.product_id = p.product_id
+INNER JOIN 
+    departments AS d ON p.department_id = d.department_id
+GROUP BY 
+    p.product_id, 
+    p.product_name, 
+    d.department
 HAVING AVG(CAST(reordered AS FLOAT)) > 0.7
 ORDER BY ReorderRate DESC;
