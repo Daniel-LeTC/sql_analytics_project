@@ -15,8 +15,14 @@ INNER JOIN order_products AS op ON o.order_id = op.order_id
 GROUP BY o.user_id, op.product_id
 ORDER BY o.user_id, TotalOrders DESC;
 
--- Top 100 selling products:
-SELECT TOP 100 product_id, COUNT(*) AS TotalSold
-FROM order_products
-GROUP BY product_id
+-- Top 100 selling products and its department:
+SELECT TOP 100
+    p.product_id,
+    p.product_name,
+    d.department,
+    COUNT(op.product_id) AS TotalSold
+FROM order_products op
+INNER JOIN products p ON op.product_id = p.product_id
+INNER JOIN departments d ON p.department_id = d.department_id
+GROUP BY p.product_id, p.product_name, d.department
 ORDER BY TotalSold DESC;
