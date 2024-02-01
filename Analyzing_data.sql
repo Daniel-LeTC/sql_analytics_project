@@ -14,3 +14,9 @@ FROM orders AS o
 INNER JOIN order_products AS op ON o.order_id = op.order_id
 GROUP BY o.user_id, op.product_id
 ORDER BY o.user_id, TotalOrders DESC;
+
+-- Top 100 selling products:
+SELECT TOP 100 product_id, COUNT(*) AS TotalSold
+FROM order_products
+GROUP BY product_id
+ORDER BY TotalSold DESC;
