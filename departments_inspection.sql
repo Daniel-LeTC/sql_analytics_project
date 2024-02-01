@@ -15,15 +15,13 @@ ALTER TABLE departments
 ALTER COLUMN department_id INT;
 
 -- Find missing values
-SELECT * 
-FROM departments 
-WHERE department_id IS NULL OR department IS NULL;
+SELECT 
+    COUNT(*) - COUNT(department_id) AS Nulls_in_department_id,
+    COUNT(*) - COUNT(department) AS Nulls_in_department
+FROM departments;
 
--- Find and remove duplicates:
-SELECT department_id, COUNT(*) 
-FROM departments
-GROUP BY department_id 
-HAVING COUNT(*) > 1;
+
+
 
 
 

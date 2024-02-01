@@ -17,9 +17,8 @@ ALTER TABLE aisles
 ALTER COLUMN aisle_id INT;
 
 -- Find missing values
-SELECT * 
-FROM aisles 
-WHERE aisle IS NULL OR aisle_id IS NULL;
--- Update missing values
+SELECT 
+    COUNT(*) - COUNT(aisle_id) AS Nulls_in_aisle_id,
+    COUNT(*) - COUNT(aisle) AS Nulls_in_aisle
+FROM aisles;
 
--- Delete row with missing values
