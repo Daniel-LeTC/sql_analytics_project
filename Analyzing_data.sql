@@ -36,3 +36,9 @@ GROUP BY o.order_dow, op.product_id
 ORDER BY o.order_dow, TotalSold DESC;
 -- Using store procedured:
 EXEC GetTopSellingProductsByDay @DayOfWeek = 1;
+
+-- Reorder rates for each product:
+SELECT product_id, AVG(CAST(reordered AS FLOAT)) AS ReorderRate
+FROM order_products
+GROUP BY product_id
+ORDER BY ReorderRate DESC;
