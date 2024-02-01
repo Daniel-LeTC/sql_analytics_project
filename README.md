@@ -38,7 +38,7 @@
 
 ### PROJECT SUMMARY:
 
-This project involved performing a detailed data analysis on a retail dataset to extract insights related to customer purchasing patterns, product popularity, seasonality effects on purchasing, and reorder tendencies. Utilizing SQL Server for data manipulation and analysis, the following tasks were accomplished:
+This project involved performing a detailed data analysis on [Instacart Market Basket](https://www.kaggle.com/competitions/instacart-market-basket-analysis/data) dataset to extract insights related to customer purchasing patterns, product popularity, seasonality effects on purchasing, and reorder tendencies. Utilizing SQL Server for data manipulation and analysis, the following tasks were accomplished:
 
 - **Market Basket Analysis**: Identified frequently purchased product combinations to understand pairing preferences which can inform cross-selling strategies.
 - **Customer Purchasing Patterns**: Determined the top products purchased by each user to personalize user experience and enhance targeted marketing.
