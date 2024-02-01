@@ -50,3 +50,13 @@ GROUP BY
     d.department
 HAVING AVG(CAST(reordered AS FLOAT)) > 0.7
 ORDER BY ReorderRate DESC;
+
+-- Reorder rates for each department:
+SELECT d.department, CONVERT(DECIMAL(10,2), AVG(CAST(reordered AS FLOAT)) * 100) AS DepReorderRate
+FROM order_products op
+JOIN products AS p ON op.product_id = p.product_id
+JOIN departments AS d ON p.department_id = d.department_id
+GROUP BY d.department
+ORDER BY DepReorderRate DESC;
+
+
