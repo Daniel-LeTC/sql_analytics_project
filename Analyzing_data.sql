@@ -26,3 +26,11 @@ INNER JOIN products p ON op.product_id = p.product_id
 INNER JOIN departments d ON p.department_id = d.department_id
 GROUP BY p.product_id, p.product_name, d.department
 ORDER BY TotalSold DESC;
+
+
+-- Sales trends over different times of the week:
+SELECT TOP 100 o.order_dow, op.product_id, COUNT(*) AS TotalSold
+FROM orders AS o
+INNER JOIN order_products AS op ON o.order_id = op.order_id
+GROUP BY o.order_dow, op.product_id
+ORDER BY o.order_dow, TotalSold DESC;
