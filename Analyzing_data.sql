@@ -37,8 +37,9 @@ ORDER BY o.order_dow, TotalSold DESC;
 -- Using store procedured:
 EXEC GetTopSellingProductsByDay @DayOfWeek = 1;
 
--- Reorder rates for each product:
-SELECT product_id, AVG(CAST(reordered AS FLOAT)) AS ReorderRate
+-- Reorder rates for each product, apply for above 70%:
+SELECT product_id, CONVERT(DECIMAL(10,2), AVG(CAST(reordered AS FLOAT)) * 100) AS ReorderRate
 FROM order_products
 GROUP BY product_id
+HAVING AVG(CAST(reordered AS FLOAT)) > 0.7
 ORDER BY ReorderRate DESC;
