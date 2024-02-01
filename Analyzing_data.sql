@@ -59,4 +59,9 @@ JOIN departments AS d ON p.department_id = d.department_id
 GROUP BY d.department
 ORDER BY DepReorderRate DESC;
 
-
+-- Sale by aisles
+SELECT a.aisle, COUNT(*) AS TotalSales
+FROM order_products AS op
+JOIN products AS p ON op.product_id = p.product_id
+JOIN aisles AS a ON p.aisle_id = a.aisle_id
+GROUP BY a.aisle;
