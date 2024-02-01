@@ -35,3 +35,4 @@ INNER JOIN order_products AS op ON o.order_id = op.order_id
 GROUP BY o.order_dow, op.product_id
 ORDER BY o.order_dow, TotalSold DESC;
 -- Using store procedured:
+EXEC GetTopSellingProductsByDay @DayOfWeek = 1;
