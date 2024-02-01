@@ -24,7 +24,11 @@ SELECT *
 FROM products 
 WHERE aisle_id LIKE '%Marinara with Meatballs"%'
 
-
+-- Trying to find aisle_id with correct value:
+SELECT * 
+FROM aisles
+WHERE aisle LIKE '%Marinara%'
+-- There is nothing called Marirana in aisles table, we will let that aside and deal with it later
 
 
 -- Find missing values
