@@ -66,8 +66,14 @@ JOIN products AS p ON op.product_id = p.product_id
 JOIN aisles AS a ON p.aisle_id = a.aisle_id
 GROUP BY a.aisle;
 
--- Sale and order by departments:
+-- Sale and order count by departments:
 SELECT d.department, COUNT(*) AS TotalSales
+FROM order_products AS op
+JOIN products AS p ON op.product_id = p.product_id
+JOIN departments AS d ON p.department_id = d.department_id
+GROUP BY d.department;
+
+SELECT d.department, COUNT(DISTINCT op.order_id) AS OrderCount
 FROM order_products AS op
 JOIN products AS p ON op.product_id = p.product_id
 JOIN departments AS d ON p.department_id = d.department_id
